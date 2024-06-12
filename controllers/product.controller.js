@@ -54,8 +54,23 @@ const getProductName = async (req, res) => {
         res.status(500).json({ message: "Error retrieving product", error: error.message });
     }
 }
+
+//  edit product
+const editProduct = async (req, res) => {
+    try {
+        const { id } = req.params
+        const product = await Product.findByIdAndUpdate(id, req.body)
+        if (!product) {
+            res.status(404).json({ message: '"Error updating product' });
+        }
+        const updatedProduct = await Product.findById(id);
+        res.status(200).json({ message: 'Product updated successfully', product: updatedProduct });
+    } catch (error) {
+        res.status(500).json({ message: "Error updating product", error: error.message });
+    }
+}
 module.exports = {
     addProduct,
     getProducts,
-    getProductByID, getProductName
+    getProductByID, getProductName, editProduct
 };
