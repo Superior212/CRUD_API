@@ -6,7 +6,7 @@ const { addProduct, getProducts, getProductByID, getProductName } = require('../
 
 
 
-router.post('/add', addProduct);
+router.post('/product', addProduct);
 router.get('/products', getProducts);
 router.get('/product/:id', getProductByID);
 router.get('/product', getProductName);

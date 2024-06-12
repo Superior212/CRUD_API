@@ -8,9 +8,9 @@ const addProduct = async (req, res) => {
 
         // can also use create to save the data
         const product = await Product.create({ name, price, quantity });
-        res.status(200).json({ message: 'Product added successfully' });
+        res.status(201).json({ message: 'Product created successfully', product: product });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: "Error creating product", error: error.message });
     }
 };
 
@@ -20,8 +20,7 @@ const getProducts = async (req, res) => {
         const product = await Product.find({});
         res.status(200).json({ message: product });
     } catch (error) {
-        res.status(500).json({ message: error.message });
-
+        res.status(500).json({ message: "Error retrieving products", error: error.message });
     }
 }
 // get product by ID
@@ -37,7 +36,7 @@ const getProductByID = async (req, res) => {
 
 
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: "Error retrieving product", error: error.message });
     }
 }
 
@@ -52,7 +51,7 @@ const getProductName = async (req, res) => {
         res.status(200).json({ message: 'Product found', product: product });
 
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: "Error retrieving product", error: error.message });
     }
 }
 module.exports = {
