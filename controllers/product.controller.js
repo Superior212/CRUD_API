@@ -41,7 +41,7 @@ const getProductByID = async (req, res) => {
 }
 
 //  get product by name
-const getProductName = async (req, res) => {
+const getProductByName = async (req, res) => {
     try {
         const { name } = req.query;
         const product = await Product.findOne({ name: name });
@@ -87,7 +87,7 @@ module.exports = {
     addProduct,
     getProducts,
     getProductByID,
-    getProductName,
+    getProductByName,
     editProduct,
     deleteProduct
 };
