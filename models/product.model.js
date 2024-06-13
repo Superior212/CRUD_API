@@ -16,6 +16,10 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Product Quantity is required']
     },
+    image: {
+        type: String,
+        required: false,
+    },
 
     Timestamp: {
         type: Date,
